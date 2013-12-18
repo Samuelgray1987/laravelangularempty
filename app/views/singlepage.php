@@ -15,7 +15,7 @@
 
   <div class="row">
     <div class="large-12">
-      <h1>Login With Angular JS</h1>
+      <h1>Login</h1>
       <div class="row">
         <div class="large-6 large-offset-3">
           <div id="flash" class="alert-box alert" ng-show="flash">
