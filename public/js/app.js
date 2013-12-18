@@ -12,19 +12,33 @@ var app = angular.module("app", ['ngSanitize']).config (function($routeProvider)
     });
 });
 
-
-app.controller('LoginController', function($scope, $location){
-  $scope.credentials = { username: "", password: "" };
-  
-  $scope.login = function() {
-    if ($scope.credentials.username == "ralph") {
-      $location.path('/home');
+app.factory("AuthenticationService", function($location){
+  return {
+    login: function (credentials) {
+      if (credentials.username == "ralph"){
+        $location.path('/home');
+      }
+    },
+    logout: function () {
+      $location.path('/login');
     }
+  };
+});
+
+
+app.controller('LoginController', function($scope, $location, AuthenticationService){
+  $scope.credentials = { username: "", password: "" };
+  $scope.login = function() {
+    AuthenticationService.login($scope.credentials);
   }
 });
-app.controller('HomeController', function($scope){
+app.controller('HomeController', function($scope, AuthenticationService){
   $scope.title = "Home";
-  $scope.message = "mouse over the images to see a directive in action."
+  $scope.message = "mouse over the images to see a directive in action.";
+  $scope.logout = function () {
+    AuthenticationService.logout();
+  }
+  
 });
 
 app.directive('showMessageOnMouseover', function(){
