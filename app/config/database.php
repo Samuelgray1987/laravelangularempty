@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'testapp',
+			'database'  => 'postsixteenapp',
 			'username'  => 'root',
 			'password'  => '345564',
 			'charset'   => 'utf8',
